@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ollamaui</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar">
+            <button id="newChatBtn" class="new-chat-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                </svg>
+                New Chat
+            </button>
+            <div class="chat-list" id="chatList">
+                <!-- Chat history will be populated here -->
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="chat-container" id="chatContainer">
+                <!-- Messages will appear here -->
+            </div>
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <textarea 
+                        id="userInput" 
+                        placeholder="Type your message..." 
+                        rows="1"
+                        maxlength="2000"
+                    ></textarea>
+                    <button id="sendBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="16" height="16">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        </svg>
+                        Send
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.2/marked.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
