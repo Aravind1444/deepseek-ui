@@ -1,0 +1,12 @@
+{
+  "name": "ollama-ui",
+  "version": "1.0.0",
+  "description": "UI for Ollama",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve public"
+  },
+  "dependencies": {
+    "serve": "^14.0.0"
+  }
+}
