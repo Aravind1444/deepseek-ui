@@ -1,6 +1,14 @@
-const API_URL = process.env.NODE_ENV === 'production' 
-    ? 'http://127.0.0.1:11434'  // Local Ollama URL
-    : 'http://localhost:3000/api'; // Development proxy URL
+// Replace the process.env check with a function to determine the API URL
+const getApiUrl = () => {
+    // If running on localhost:3000, use the proxy
+    if (window.location.hostname === 'localhost') {
+        return 'http://localhost:3000/api';
+    }
+    // Otherwise use direct Ollama URL
+    return 'http://127.0.0.1:11434';
+};
+
+const API_URL = getApiUrl();
 
 class ChatUI {
     constructor() {
