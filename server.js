@@ -9,7 +9,7 @@ const port = 3000;
 app.use(cors());
 
 // Serve static files
-app.use(express.static('.'));
+app.use(express.static('public'));
 
 // Log all incoming requests
 app.use((req, res, next) => {
