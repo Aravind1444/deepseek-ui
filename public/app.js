@@ -1,11 +1,22 @@
+// IMPORTANT: For Vercel deployment with ngrok, set this variable.
+// Example: window.VERCEL_OLLAMA_PROXY_URL = "https://your-unique-ngrok-id.ngrok.io/api";
+// Make sure this URL points to your ngrok tunnel PLUS the /api suffix.
+window.VERCEL_OLLAMA_PROXY_URL = "YOUR_NGROK_OR_PUBLIC_URL_HERE/api"; 
+
 // Replace the process.env check with a function to determine the API URL
 const getApiUrl = () => {
-    // If running on localhost:3000, use the proxy
-    if (window.location.hostname === 'localhost') {
-        return 'http://localhost:3000/api';
+    // Priority 1: Use a global variable if set (for Vercel/ngrok). Expected to be like "https://<ngrok_id>.ngrok.io/api"
+    if (window.VERCEL_OLLAMA_PROXY_URL && window.VERCEL_OLLAMA_PROXY_URL !== "YOUR_NGROK_OR_PUBLIC_URL_HERE/api") {
+        return window.VERCEL_OLLAMA_PROXY_URL.replace(/\/$/, ''); // Remove trailing slash if any
     }
-    // Otherwise use direct Ollama URL
-    return 'http://127.0.0.1:11434';
+
+    // Priority 2: If running on localhost:3000 (implies using server.js proxy)
+    if (window.location.hostname === 'localhost' && window.location.port === '3000') {
+        return 'http://localhost:3000/api'; // server.js serves the proxy from /api/chat
+    }
+    
+    // Priority 3: Default to direct Ollama URL
+    return 'http://127.0.0.1:11434/api'; 
 };
 
 const API_URL = getApiUrl();
